@@ -1,3 +1,3 @@
 abstract class AppAssets {
-  static final String defaultImage = "assets/img/Default Image.jpeg";
+  static const String defaultImage = "assets/img/Default Image.jpeg";
 }

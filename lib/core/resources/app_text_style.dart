@@ -38,7 +38,14 @@ abstract class AppTextStyle {
     return TextStyle(fontSize: 25);
   }
 
-  static TextStyle Text_S20(BuildContext context) {
-    return TextStyle(fontSize: 20);
+  static TextStyle Text_S20(BuildContext context, {Color? color}) {
+    return TextStyle(
+      fontSize: 20,
+      color: color ?? Colors.white,
+    );
+  }
+
+  static TextStyle Text_S16(BuildContext context) {
+    return TextStyle(fontSize: 16);
   }
 }

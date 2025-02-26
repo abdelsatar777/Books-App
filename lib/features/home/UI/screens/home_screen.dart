@@ -17,11 +17,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              size: 20,
-              color: Colors.white,
-            ),
+            icon: Icon(Icons.search, size: 30),
           ),
         ],
       ),
