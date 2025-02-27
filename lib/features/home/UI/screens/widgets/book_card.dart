@@ -22,7 +22,7 @@ class BookCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Image.asset(
+          child: Image.network(
             img,
             fit: BoxFit.cover,
             width: width,

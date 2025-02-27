@@ -4,7 +4,6 @@ import 'package:books_app/features/home/UI/manager/books_cubit/books_state.dart'
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/resources/app_assets.dart';
 import 'book_card.dart';
 import 'detail_card.dart';
 
@@ -16,6 +15,12 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<BooksCubit>().getBooks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BooksCubit, BooksState>(
@@ -39,8 +44,8 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
                 itemBuilder: (context, index, realIndex) {
                   return BookCard(
-                      img: state.books[index].volumeInfo!.imageLinks!.medium ??
-                          AppAssets.defaultImage);
+                      img: state.books[index].volumeInfo!.imageLinks!.medium
+                          .toString());
                 },
               ),
               SizedBox(height: 50),
@@ -57,18 +62,15 @@ class _HomeBodyState extends State<HomeBody> {
                     SizedBox(height: 30),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.48,
-                      child: Expanded(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
-                              child: DetailCard(),
-                            );
-                          },
-                        ),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: DetailCard(),
+                          );
+                        },
                       ),
                     ),
                   ],
