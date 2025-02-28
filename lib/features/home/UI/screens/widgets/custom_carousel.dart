@@ -25,7 +25,7 @@ class CustomCarousel extends StatelessWidget {
         autoPlay: true, // تعطيل التشغيل التلقائي
       ),
       itemBuilder: (context, index, realIndex) {
-        return BookCard(img: _images[index]);
+        return BookCard(imgId: _images[index]);
       },
     );
   }

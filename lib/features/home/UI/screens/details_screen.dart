@@ -2,7 +2,9 @@ import 'package:books_app/features/home/UI/screens/widgets/details_body.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
+  final String id;
+
+  const DetailsScreen({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class DetailsScreen extends StatelessWidget {
           )
         ],
       ),
-      body: DetailsBody(),
+      body: DetailsBody(id: id),
     );
   }
 }

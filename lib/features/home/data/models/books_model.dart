@@ -1,3 +1,27 @@
+class BooksModel {
+  final String key;
+  final String title;
+  final String firstPublishYear;
+  final String coverId;
+
+  BooksModel({
+    required this.key,
+    required this.title,
+    required this.firstPublishYear,
+    required this.coverId,
+  });
+
+  factory BooksModel.fromJson(Map<String, dynamic> json) {
+    return BooksModel(
+      key: json["work"]["key"] ?? "No Key",
+      title: json["work"]["title"] ?? "No Title",
+      firstPublishYear: json["work"]["first_publish_year"].toString(),
+      coverId: json["work"]["cover_id"].toString(),
+    );
+  }
+}
+
+/*
 import 'package:books_app/features/home/data/models/sale_info.dart';
 import 'package:books_app/features/home/data/models/volume_info.dart';
 
@@ -58,3 +82,4 @@ class BooksModel {
     return data;
   }
 }
+*/

@@ -16,12 +16,6 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   @override
-  void initState() {
-    super.initState();
-    context.read<BooksCubit>().getBooks();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<BooksCubit, BooksState>(
       builder: (context, state) {
@@ -30,7 +24,7 @@ class _HomeBodyState extends State<HomeBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CarouselSlider.builder(
-                itemCount: 5,
+                itemCount: state.books.length,
                 options: CarouselOptions(
                   height: 300,
                   // ارتفاع العنصر
@@ -43,9 +37,7 @@ class _HomeBodyState extends State<HomeBody> {
                   autoPlay: true, // تعطيل التشغيل التلقائي
                 ),
                 itemBuilder: (context, index, realIndex) {
-                  return BookCard(
-                      img: state.books[index].volumeInfo!.imageLinks!.medium
-                          .toString());
+                  return BookCard(imgId: state.books[index].coverId);
                 },
               ),
               SizedBox(height: 50),
@@ -64,11 +56,11 @@ class _HomeBodyState extends State<HomeBody> {
                       height: MediaQuery.of(context).size.height * 0.48,
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: 5,
+                        itemCount: state.books.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: DetailCard(),
+                            child: DetailCard(booksModel: state.books[index]),
                           );
                         },
                       ),
